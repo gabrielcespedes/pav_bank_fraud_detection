@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Fraude</title>
+    <link rel="stylesheet" href="../static/styles/style.css">
+</head>
+<body>
+    <a href="/">
+        <div class="logo-title">
+            <img src="../static/imgs/logo.png" alt="Logo Shield Bank" class="logo">
+            <h2>dataforge</h2>
+        </div>
+    </a>    
+    <div class="circle circle-large"></div>
+    <div class="circle circle-purple"></div>
+    <div class="circle circle-blue"></div>
+    <div class="circle circle-pink"></div>
+    
+    <h1>Sube tu archivo CSV o Excel para predecir fraude</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <!-- Input de archivo oculto -->
+        <input type="file" id="file" name="file" accept=".csv,.xlsx" required>
+
+        <!-- Botón visible que activa el input oculto -->
+        <label for="file" class="file-label">Seleccionar archivo</label>
+
+        <!-- Mostrar el nombre del archivo seleccionado -->
+        <p class="selected-file" id="file-name">Ningún archivo seleccionado</p>
+
+        <button type="submit">Predecir</button>
+    </form>
+
+    <script>
+        // Mostrar el nombre del archivo seleccionado
+        document.getElementById('file').addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : 'Ningún archivo seleccionado';
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+
+</body>
+</html>

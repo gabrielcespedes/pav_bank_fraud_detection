@@ -11,8 +11,12 @@ OUTPUT_FOLDER = 'outputs'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
-@main.route('/', methods=['GET', 'POST'])
-def index():
+@main.route('/', methods = ['GET'])
+def inicio():
+    return render_template('index.html') # login visual
+
+@main.route('/prediccion', methods=['GET', 'POST'])
+def prediccion():
     if request.method == 'POST':
         file = request.files['file']
         if file:
@@ -38,4 +42,4 @@ def index():
             # Ofrecer archivo para descarga
             return send_file(output_path, as_attachment=True)
 
-    return render_template('index.html')
+    return render_template('prediccion.html')
