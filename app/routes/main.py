@@ -1,4 +1,4 @@
-from flask import Blueprint, request, send_file, render_template
+from flask import Blueprint, request, send_file, render_template, flash, redirect, url_for
 from utils.predict import hacer_predicciones
 import os
 
@@ -43,3 +43,25 @@ def prediccion():
             return send_file(output_path, as_attachment=True)
 
     return render_template('prediccion.html')
+
+@main.route('/registro', methods = ["GET", "POST"])
+def registro():
+    if request.method == "POST":
+        nombre = request.form.get('nombre')
+        correo = request.form.get('correo')
+        usuario = request.form.get('usuario')
+        password = request.form.get('password')
+        confirmar = request.form.get('confirmar')
+
+        if not usuario or not password or not confirmar:
+            flash("Por favor completa todos los campos.")
+            return render_template("registro.html")
+
+        if password != confirmar:
+            flash("Las contraseñas no coinciden.")
+            return render_template('registro.html')
+        
+        flash("Usuario registrado con éxito.")
+        return redirect(url_for('main.inicio')) # redirige a index
+    
+    return render_template('registro.html')

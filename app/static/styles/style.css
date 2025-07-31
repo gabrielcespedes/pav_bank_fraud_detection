@@ -514,3 +514,22 @@ iframe {
     height: 450px; 
     border: none; 
 }
+
+
+.flash-messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 1em 0;
+    text-align: center;
+    font-family: 'Lato', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+.flash-messages li {
+    background-color: #660055;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    border-radius: 5px;
+}

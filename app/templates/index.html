@@ -17,8 +17,18 @@
 
     <!-- Barra de navegación -->
     <nav class="navbar">
-        <a href="#">Soporte</a>        
+        <a href="/registro">Registro</a>        
     </nav>
+    
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
 
     <div class="logo-title">
         <img src="../static/imgs/logo.png" alt="Logo Shield Bank" class="logo">
@@ -36,13 +46,12 @@
     <div class="content">
         <div class="text-section">
             <h1>Proveyendo inteligencia antifraude a las instituciones financieras.</h1>
-        </div>
+        </div>        
 
         <div class="login-section">
             <div class="login-visual">
                 <input type="text" id="username" placeholder="Usuario" onclick="clearPlaceholder(this)" onblur="restorePlaceholder(this, 'Usuario')">
                 <input type="password" id="password" placeholder="Contraseña" onclick="clearPlaceholder(this)" onblur="restorePlaceholder(this, 'Contraseña')">
-                <p>Si olvidó su contraseña contacte con soporte.</p>
                 <button class="login-button" onclick="login()">Iniciar sesión</button>
             </div>            
         </div>
