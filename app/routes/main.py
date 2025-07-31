@@ -2,6 +2,9 @@ from flask import Blueprint, request, send_file, render_template, flash, redirec
 from utils.predict import hacer_predicciones
 import os
 
+from werkzeug.security import generate_password_hash
+from models import Usuario, db
+
 main = Blueprint('main', __name__)
 
 UPLOAD_FOLDER = 'uploads'
@@ -61,7 +64,30 @@ def registro():
             flash("Las contraseñas no coinciden.")
             return render_template('registro.html')
         
+        # Verificar si el usuario ya existe
+        usuario_existente = Usuario.query.filter_by(usuario = usuario).first()
+        correo_existente = Usuario.query.filter_by(correo = correo).first()
+
+        if usuario_existente or correo_existente:
+            flash("Ya existe un usuario con ese nombre o correo.")
+            return render_template("registro.html")
+
+        # Hashear contraseña
+        hashed_password = generate_password_hash(password)
+
+        # Crear usuario
+        nuevo_usuario = Usuario(
+            nombre = nombre,
+            correo = correo,
+            usuario = usuario,
+            password = hashed_password
+        )
+
+        # Guardar en la base de datos
+        db.session.add(nuevo_usuario)
+        db.session.commit()
+
         flash("Usuario registrado con éxito.")
-        return redirect(url_for('main.inicio')) # redirige a index
+        return redirect(url_for('main.inicio'))
     
     return render_template('registro.html')

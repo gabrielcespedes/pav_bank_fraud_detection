@@ -3,3 +3,6 @@ pandas
 joblib
 scikit-learn
 openpyxl
+flask_sqlalchemy
+Werkzeug
+dotenv
