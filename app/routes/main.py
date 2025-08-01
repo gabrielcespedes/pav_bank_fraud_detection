@@ -2,7 +2,7 @@ from flask import Blueprint, request, send_file, render_template, flash, redirec
 from utils.predict import hacer_predicciones
 import os
 
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from models import Usuario, db
 
 main = Blueprint('main', __name__)
@@ -14,8 +14,21 @@ OUTPUT_FOLDER = 'outputs'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
-@main.route('/', methods = ['GET'])
+@main.route('/', methods = ['GET', 'POST'])
 def inicio():
+    if request.method == 'POST':
+        usuario_input = request.form.get('usuario')
+        password_input = request.form.get('password')
+
+        # Buscar usuario en la base de datos
+        usuario_db = Usuario.query.filter_by(usuario = usuario_input).first()
+
+        if usuario_db and check_password_hash(usuario_db.password, password_input):
+            flash(f"Bienvenido {usuario_db.nombre}")
+            return redirect(url_for('main.prediccion'))  # Redirige a predicción
+        else:
+            flash("Credenciales incorrectas. Intenta nuevamente.")
+            return redirect(url_for('main.inicio'))
     return render_template('index.html') # login visual
 
 @main.route('/prediccion', methods=['GET', 'POST'])

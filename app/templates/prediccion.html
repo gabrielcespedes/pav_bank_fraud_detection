@@ -14,7 +14,16 @@
             <img src="../static/imgs/logo.png" alt="Logo Shield Bank" class="logo">
             <h2>dataforge</h2>
         </div>
-    </a>    
+    </a>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}    
     <div class="circle circle-large"></div>
     <div class="circle circle-purple"></div>
     <div class="circle circle-blue"></div>

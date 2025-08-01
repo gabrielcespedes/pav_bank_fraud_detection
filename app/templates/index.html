@@ -50,10 +50,12 @@
 
         <div class="login-section">
             <div class="login-visual">
-                <input type="text" id="username" placeholder="Usuario" onclick="clearPlaceholder(this)" onblur="restorePlaceholder(this, 'Usuario')">
-                <input type="password" id="password" placeholder="Contraseña" onclick="clearPlaceholder(this)" onblur="restorePlaceholder(this, 'Contraseña')">
-                <button class="login-button" onclick="login()">Iniciar sesión</button>
-            </div>            
+                <form method="POST" action="/">
+                    <input type="text" name="usuario" placeholder="Usuario" required>
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <button type="submit" class="login-button">Iniciar sesión</button>
+                </form>
+            </div>
         </div>
     </div>
 
