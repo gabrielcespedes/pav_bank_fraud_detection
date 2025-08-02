@@ -362,6 +362,25 @@ button {
     color: #d400d4;
 }
 
+.predict-button {
+    width: 50%;
+    padding: 10px 20px;
+    margin-top: 40px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff005c, #d400d4);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.predict-button:hover {
+    background: linear-gradient(45deg, #d400d4, #ff005c);
+}
+
+
 /* Ocultar el título y expandir la columna derecha en pantallas móviles */
 @media (max-width: 600px) {
     .text-section h1 {

@@ -17,7 +17,11 @@
 
     <!-- Barra de navegación -->
     <nav class="navbar">
-        <a href="/registro">Registro</a>        
+        {% if 'usuario' in session %}
+            <a href="/logout">Cerrar sesión</a>
+        {% else %}
+            <a href="/registro">Registro</a>
+        {% endif %}
     </nav>
     
         {% with messages = get_flashed_messages() %}
@@ -50,11 +54,16 @@
 
         <div class="login-section">
             <div class="login-visual">
+                {% if 'usuario' in session %}
+                    <h2>Hola, {{ session['usuario'] }}!</h2>
+                    <a href="/prediccion" class="predict-button">Predecir</a>
+                {% else %}
                 <form method="POST" action="/">
                     <input type="text" name="usuario" placeholder="Usuario" required>
                     <input type="password" name="password" placeholder="Contraseña" required>
                     <button type="submit" class="login-button">Iniciar sesión</button>
                 </form>
+                {% endif %}
             </div>
         </div>
     </div>
