@@ -1,4 +1,4 @@
-from flask import Blueprint, request, send_file, render_template, flash, redirect, url_for
+from flask import Blueprint, request, send_file, render_template, flash, redirect, url_for, session
 from utils.predict import hacer_predicciones
 import os
 
@@ -24,6 +24,7 @@ def inicio():
         usuario_db = Usuario.query.filter_by(usuario = usuario_input).first()
 
         if usuario_db and check_password_hash(usuario_db.password, password_input):
+            session["usuario"] = usuario_db.usuario # guarda en sesión
             flash(f"Bienvenido {usuario_db.nombre}")
             return redirect(url_for('main.prediccion'))  # Redirige a predicción
         else:
@@ -33,6 +34,9 @@ def inicio():
 
 @main.route('/prediccion', methods=['GET', 'POST'])
 def prediccion():
+    if 'usuario' not in session:
+        flash("Debes iniciar sesión para acceder.")
+        return redirect(url_for('main.inicio'))
     if request.method == 'POST':
         file = request.files['file']
         if file:
@@ -104,3 +108,9 @@ def registro():
         return redirect(url_for('main.inicio'))
     
     return render_template('registro.html')
+
+@main.route('/logout')
+def logout():
+    session.pop('usuario', None)
+    flash("Sesión cerrada correctamente.")
+    return redirect(url_for('main.inicio'))
