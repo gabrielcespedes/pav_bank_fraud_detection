@@ -2,7 +2,7 @@ import joblib
 import pandas as pd
 import os
 
-from ml.config_vars import categoricas
+from app.ml.config_vars import categoricas
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, '../ml/modelo_bank.joblib')
