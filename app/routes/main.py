@@ -1,5 +1,5 @@
 from flask import Blueprint, request, send_file, render_template, flash, redirect, url_for, session
-from utils.predict import hacer_predicciones
+from app.utils.predict import hacer_predicciones
 import os
 
 from werkzeug.security import generate_password_hash, check_password_hash
