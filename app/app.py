@@ -1,5 +1,5 @@
 from flask import Flask
-from routes.main import main # importando Blueprint
+from app.routes.main import main # importando Blueprint
 
 from models import db # se importa objeto SQLAlchemy
 
