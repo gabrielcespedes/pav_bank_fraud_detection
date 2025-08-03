@@ -1,22 +1,17 @@
 import joblib
 import pandas as pd
-
-import sys
 import os
-
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-MODEL_PATH = os.path.join(BASE_DIR, 'ml', 'modelo_bank.joblib')
-
-sys.path.append(BASE_DIR)
 
 from ml.config_vars import categoricas
 
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, '../ml/modelo_bank.joblib')
+COLUMNAS_PATH = os.path.join(BASE_DIR, '../ml/columnas_entrenamiento.joblib')
+
 print("RUTA DEL MODELO:", MODEL_PATH)
 
-modelo = joblib.load(MODEL_PATH)
-
-RUTA_COLUMNAS = os.path.join(BASE_DIR, 'ml', 'columnas_entrenamiento.joblib')
-columnas_entrenamiento = joblib.load(RUTA_COLUMNAS)
+modelo = joblib.load(os.path.abspath(MODEL_PATH))
+columnas_entrenamiento = joblib.load(os.path.abspath(COLUMNAS_PATH))
 
 def hacer_predicciones(filepath):
 

@@ -1,0 +1,8 @@
+Flask
+pandas
+openpyxl
+scikit-learn
+SQLAlchemy
+python-dotenv
+Werkzeug
+gunicorn

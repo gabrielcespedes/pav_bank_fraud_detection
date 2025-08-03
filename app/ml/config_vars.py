@@ -1,0 +1,1 @@
+categoricas = ['source', 'housing_status', 'device_os', 'payment_type', 'employment_status']
