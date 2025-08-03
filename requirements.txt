@@ -1,4 +1,4 @@
-flask
+Flask
 pandas
 joblib
 scikit-learn
@@ -6,3 +6,7 @@ openpyxl
 flask_sqlalchemy
 Werkzeug
 dotenv
+SQLAlchemy
+python-dotenv
+gunicorn
+joblib
