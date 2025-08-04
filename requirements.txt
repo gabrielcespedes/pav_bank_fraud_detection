@@ -10,3 +10,4 @@ SQLAlchemy
 python-dotenv
 gunicorn
 joblib
+xgboost

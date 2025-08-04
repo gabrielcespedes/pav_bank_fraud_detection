@@ -6,3 +6,5 @@ SQLAlchemy
 python-dotenv
 Werkzeug
 gunicorn
+joblib
+xgboost
