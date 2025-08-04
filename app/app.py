@@ -1,7 +1,7 @@
 from flask import Flask
 from app.routes.main import main # importando Blueprint
 
-from models import db # se importa objeto SQLAlchemy
+from app.models import db # se importa objeto SQLAlchemy
 
 def create_app():
     app = Flask(__name__)
