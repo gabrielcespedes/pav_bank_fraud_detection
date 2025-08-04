@@ -7,8 +7,10 @@ from app.models import Usuario, db
 
 main = Blueprint('main', __name__)
 
-UPLOAD_FOLDER = 'uploads'
-OUTPUT_FOLDER = 'outputs'
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+
+UPLOAD_FOLDER = os.path.join(BASE_DIR, '../uploads')
+OUTPUT_FOLDER = os.path.join(BASE_DIR, '../outputs')
 
 # Asegura que las carpetas existan
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
