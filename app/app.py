@@ -5,7 +5,7 @@ from app.models import db # se importa objeto SQLAlchemy
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object('config.Config')        
+    app.config.from_object('app.config.Config')        
     db.init_app(app) # inicia la base de datos con la app
     app.register_blueprint(main)
 
