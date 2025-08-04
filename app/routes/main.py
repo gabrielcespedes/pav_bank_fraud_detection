@@ -3,7 +3,7 @@ from app.utils.predict import hacer_predicciones
 import os
 
 from werkzeug.security import generate_password_hash, check_password_hash
-from models import Usuario, db
+from app.models import Usuario, db
 
 main = Blueprint('main', __name__)
 
