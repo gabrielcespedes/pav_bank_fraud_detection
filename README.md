@@ -78,6 +78,10 @@ python -m app.app
 
 https://pav-bank-fraud-detection.onrender.com/
 
+- Datos para predecir de ejemplo
+
+https://drive.google.com/drive/folders/1db0Ap_jgSwObAg_1ev5f1sxsyKm2qOUJ?usp=sharing
+
 ## Puntos importantes
 
 - Archivos subidos (uploads/) y generados (outputs/) son temporales en Render y se eliminan al reiniciar el deploy.
